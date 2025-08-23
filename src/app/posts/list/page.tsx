@@ -1,5 +1,4 @@
-import axios from "axios";
-import Image from "next/image";
+import { API } from "@/app/api";
 import Link from "next/link";
 
 interface Props {
@@ -7,7 +6,7 @@ interface Props {
 }
 
 export default async function Posts() {
-    const posts = await axios.get<any[]>('http://localhost:3000/posts').then(res => res.data)
+    const posts = await API.get<any[]>('/posts').then(res => res.data)
     return (
         <div>
             {posts?.map(item => <div key={item.id} className="border-1 rounded-xl p-4 m-4">

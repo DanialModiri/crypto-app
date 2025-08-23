@@ -1,3 +1,4 @@
+import { API } from '@/app/api'
 import axios from 'axios'
 import React, { Fragment } from 'react'
 
@@ -9,7 +10,7 @@ async function page({
     params
 }: Props) {
     const { id } = await params
-    const data = await axios.get(`http://localhost:3000/posts/${id}`).then(res => res.data)
+    const data = await API.get(`posts/${id}`).then(res => res.data)
     return (
         <div>
             <div className='p-4 m-4 border-1 rounded-xl'>
