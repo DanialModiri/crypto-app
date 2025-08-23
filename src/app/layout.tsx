@@ -27,6 +27,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="p-4">
+          CryptoKar
+        </header>
         {children}
       </body>
     </html>
