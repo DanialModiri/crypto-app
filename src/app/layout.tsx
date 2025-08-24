@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import AppContextProvider from "./ui/AppContextProvider";
 
-export const iranyekan = localFont({
+const iranyekan = localFont({
   src: [
     // وزن 100 (Thin)
     {

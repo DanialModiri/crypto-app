@@ -4,10 +4,10 @@ import { Suspense } from "react";
 import PostListContainer from "./components/PostListContainer";
 
 interface Props {
-    searchParams?: {
+    searchParams?: Promise<{
         search?: string;
         page?: string;
-    };
+    }>;
 }
 
 export default async function Posts({
