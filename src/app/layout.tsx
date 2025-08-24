@@ -1,6 +1,63 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import AppContextProvider from "./ui/AppContextProvider";
+
+export const iranyekan = localFont({
+  src: [
+    // وزن 100 (Thin)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanwebthinfanum.ttf',
+      weight: '100',
+      style: 'normal',
+    },
+    // وزن 300 (Light)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanweblightfanum.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    // وزن 400 (Normal/Regular)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanwebregularfanum.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    // وزن 500 (Medium)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanwebmediumfanum.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    // وزن 700 (Bold)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanwebboldfanum.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    // وزن 800 (Extra Bold)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanwebextraboldfanum.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+    // وزن 850 (Black)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanwebblackfanum.ttf',
+      weight: '850',
+      style: 'normal',
+    },
+    // وزن 900 (Extra Black)
+    {
+      path: './iranYekan/fonts/ttf/iranyekanwebextrablackfanum.ttf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-iranyekan',
+  display: 'swap',
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,15 +79,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <header className="p-4">
-          CryptoKar
-        </header>
-        {children}
+    <html lang="fa" dir="rtl" className={iranyekan.variable}>
+      <body>
+        <AppContextProvider>
+          {children}
+        </AppContextProvider>
       </body>
     </html>
   );

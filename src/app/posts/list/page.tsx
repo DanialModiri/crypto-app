@@ -1,25 +1,26 @@
-import { API } from "@/app/api";
-import Link from "next/link";
+import PostsList from "@/app/ui/PostsList";
+import Search from "@/app/ui/Search";
+import { Suspense } from "react";
+import PostListContainer from "./components/PostListContainer";
 
 interface Props {
-
+    searchParams?: {
+        search?: string;
+        page?: string;
+    };
 }
 
-export default async function Posts() {
-    const posts = await API.get<any[]>('/posts').then(res => res.data)
+export default async function Posts({
+    searchParams
+}: Props) {
+    const query = await searchParams
     return (
-        <div>
-            {posts?.map(item => <div key={item.id} className="border-1 rounded-xl p-4 m-4">
-                <h3>
-                    {item.title}
-                </h3>
-                <p className="text-gray-500 mt-2">
-                    {item.content}
-                </p>
-                <Link href={'/posts/' + item.id} className="rounded-lg">
-                    مشاهده
-                </Link>
-            </div>)}
-        </div>
+        <PostListContainer>
+            <Search />
+            <Suspense key={query?.search} fallback={<>Loading...</>}>
+                <PostsList query={query} />
+            </Suspense>
+
+        </PostListContainer>
     );
 }
